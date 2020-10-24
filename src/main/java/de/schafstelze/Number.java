@@ -1,4 +1,4 @@
-package de.thierbach;
+package de.schafstelze;
 import java.util.Arrays;
 import java.util.List;
 

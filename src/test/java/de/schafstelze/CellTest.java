@@ -1,10 +1,8 @@
-package de.thierbach;
+package de.schafstelze;
 import static org.junit.Assert.*;
-import static de.thierbach.Number.*;
+import static de.schafstelze.Number.*;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
-
-import de.thierbach.Cell;
 
 public class CellTest {
 

@@ -1,7 +1,7 @@
-package de.thierbach;
+package de.schafstelze;
 
-import static de.thierbach.Position.at;
-import static de.thierbach.Number.*;
+import static de.schafstelze.Position.at;
+import static de.schafstelze.Number.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import de.thierbach.Sudoku.SudokuBuilder;
+import de.schafstelze.Sudoku.SudokuBuilder;
 
 public class SudokuTest {
 	

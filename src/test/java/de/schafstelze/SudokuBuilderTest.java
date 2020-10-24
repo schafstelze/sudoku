@@ -1,14 +1,14 @@
-package de.thierbach;
+package de.schafstelze;
 
 import static org.junit.Assert.*;
 
-import static de.thierbach.Position.at;
-import static de.thierbach.Number.*;
+import static de.schafstelze.Position.at;
+import static de.schafstelze.Number.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import org.junit.Test;
 
-import de.thierbach.Sudoku.SudokuBuilder;
+import de.schafstelze.Sudoku.SudokuBuilder;
 
 public class SudokuBuilderTest {
 

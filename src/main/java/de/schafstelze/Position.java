@@ -1,4 +1,4 @@
-package de.thierbach;
+package de.schafstelze;
 
 public class Position {
 
