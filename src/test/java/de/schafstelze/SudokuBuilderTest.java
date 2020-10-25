@@ -16,11 +16,10 @@ public class SudokuBuilderTest {
 	public void buildReturnsSudokuWithEmptyCells() {
 		Sudoku sudoku = new SudokuBuilder().build();
 		
-		NUMBER_LIST.stream().forEach(number -> {
-			sudoku.getRow(number).stream().forEach(cell -> {
-				assertThat(cell.getContent(), is(nullValue()));
-			});
-		});
+		NUMBER_LIST.forEach(
+				number -> sudoku.getRow(number).forEach(
+						cell -> assertThat(cell.getContent(), is(nullValue()))
+				));
 	}
 
 	@Test
@@ -29,15 +28,15 @@ public class SudokuBuilderTest {
 
 		assertThat(sudoku.getContent(at(ONE, ONE)), is(ONE));
 		
-		NUMBER_LIST.stream().forEach(number -> {
+		NUMBER_LIST.forEach(number -> {
 			if (number.equals(ONE)) {
-				sudoku.getRow(number).stream().skip(1).forEach(cell -> {
-					assertThat(cell.getContent(), is(nullValue()));
-				});
+				sudoku.getRow(number).stream().skip(1).forEach(
+						cell -> assertThat(cell.getContent(), is(nullValue()))
+				);
 			} else {
-				sudoku.getRow(number).stream().forEach(cell -> {
-					assertThat(cell.getContent(), is(nullValue()));
-				});
+				sudoku.getRow(number).forEach(cell ->
+						assertThat(cell.getContent(), is(nullValue()))
+				);
 			}
 		});
 	}
@@ -51,39 +50,4 @@ public class SudokuBuilderTest {
 		assertThat(sudoku.getContent(at(THREE, FIVE)), is(NINE));
 	}
 
-	@Test
-	public void printSudoku() {
-		Sudoku sudoku = new SudokuBuilder().build();
-
-		NUMBER_LIST.forEach(rowNumber -> {
-			NUMBER_LIST.forEach(columnNumber -> {
-				sudoku.cell(at(rowNumber, columnNumber)).apply(columnNumber);
-			});
-		});
-
-		String exepctedString =
-   			"""
-			=========================================
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			-----------------------------------------
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			-----------------------------------------
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			=========================================
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			-----------------------------------------
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			-----------------------------------------
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			=========================================
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			-----------------------------------------
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			-----------------------------------------
-			|| 1 | 2 | 3 || 4 | 5 | 6 || 7 | 8 | 9 ||
-			=========================================
-			""";
-		assertThat(sudoku.toString(), is(exepctedString));
-	}
-	
 }

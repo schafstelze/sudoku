@@ -3,7 +3,6 @@ package de.schafstelze;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import com.google.common.collect.ArrayTable;
 import com.google.common.collect.Table;
@@ -60,7 +59,7 @@ public class Sudoku {
 	
 	private List<Cell> toCellList(Map<Number, Cell> input) {
 		List<Cell> cells = new ArrayList<>();
-		NUMBER_LIST.stream().forEach(number -> cells.add(input.get(number)));
+		NUMBER_LIST.forEach(number -> cells.add(input.get(number)));
 		return cells;
 	}
 
@@ -83,7 +82,7 @@ public class Sudoku {
 	
 	public static class SudokuBuilder {
 		
-		private Table<Number, Number, Cell> field;
+		private final Table<Number, Number, Cell> field;
 		
 		public SudokuBuilder() {
 			field = ArrayTable.create(NUMBER_LIST, NUMBER_LIST);
@@ -95,15 +94,14 @@ public class Sudoku {
 		}
 	
 		public Sudoku build() {
-			NUMBER_LIST.stream().forEach(rowKey -> {
-				NUMBER_LIST.stream().forEach(columnKey -> {
-					Cell currentCell = field.get(rowKey, columnKey);
-					
-					if (currentCell == null) {
-						field.put(rowKey, columnKey, Cell.empty());
-					}
-				});
-			});
+			NUMBER_LIST.forEach(rowKey ->
+					NUMBER_LIST.forEach(columnKey -> {
+						Cell currentCell = field.get(rowKey, columnKey);
+
+						if (currentCell == null) {
+							field.put(rowKey, columnKey, Cell.empty());
+						}
+			}));
 			
 			return new Sudoku(field);
 		}
