@@ -1,10 +1,12 @@
-package de.schafstelze;
+package de.schafstelze.model;
 
+import de.schafstelze.model.Block;
+import de.schafstelze.model.Position;
 import org.junit.Test;
 
 import java.util.List;
 
-import static de.schafstelze.Number.*;
+import static de.schafstelze.model.Number.*;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
 

@@ -1,4 +1,4 @@
-package de.schafstelze;
+package de.schafstelze.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 import com.google.common.collect.ArrayTable;
 import com.google.common.collect.Table;
 
-import static de.schafstelze.Number.NUMBER_LIST;
+import static de.schafstelze.model.Number.NUMBER_LIST;
 
 public class Sudoku {
 

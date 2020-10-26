@@ -1,7 +1,9 @@
-package de.schafstelze;
+package de.schafstelze.model;
 import static org.junit.Assert.*;
-import static de.schafstelze.Number.*;
+import static de.schafstelze.model.Number.*;
 import static org.hamcrest.CoreMatchers.is;
+
+import de.schafstelze.model.Cell;
 import org.junit.Test;
 
 public class CellTest {

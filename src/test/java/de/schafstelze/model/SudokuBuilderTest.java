@@ -1,14 +1,16 @@
-package de.schafstelze;
+package de.schafstelze.model;
 
 import static org.junit.Assert.*;
 
-import static de.schafstelze.Position.at;
-import static de.schafstelze.Number.*;
+import static de.schafstelze.model.Position.at;
+import static de.schafstelze.model.Number.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.nullValue;
+
+import de.schafstelze.model.Sudoku;
 import org.junit.Test;
 
-import de.schafstelze.Sudoku.SudokuBuilder;
+import de.schafstelze.model.Sudoku.SudokuBuilder;
 
 public class SudokuBuilderTest {
 

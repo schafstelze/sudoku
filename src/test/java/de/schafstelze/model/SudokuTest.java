@@ -1,15 +1,17 @@
-package de.schafstelze;
+package de.schafstelze.model;
 
-import static de.schafstelze.Position.at;
-import static de.schafstelze.Number.*;
+import static de.schafstelze.model.Position.at;
+import static de.schafstelze.model.Number.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
+import de.schafstelze.model.Cell;
+import de.schafstelze.model.Sudoku;
 import org.junit.Test;
 
-import de.schafstelze.Sudoku.SudokuBuilder;
+import de.schafstelze.model.Sudoku.SudokuBuilder;
 
 public class SudokuTest {
 	

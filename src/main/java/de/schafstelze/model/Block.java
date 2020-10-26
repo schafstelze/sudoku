@@ -1,11 +1,11 @@
-package de.schafstelze;
+package de.schafstelze.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static de.schafstelze.Position.at;
-import static de.schafstelze.Number.*;
+import static de.schafstelze.model.Position.at;
+import static de.schafstelze.model.Number.*;
 
 public class Block {
 

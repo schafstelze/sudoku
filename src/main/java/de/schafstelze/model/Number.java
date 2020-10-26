@@ -1,4 +1,4 @@
-package de.schafstelze;
+package de.schafstelze.model;
 import java.util.Arrays;
 import java.util.List;
 
