@@ -1,16 +1,14 @@
-package de.schafstelze.model;
+package de.schafstelze.sudoku.model;
 
 import static org.junit.Assert.*;
 
-import static de.schafstelze.model.Position.at;
-import static de.schafstelze.model.Number.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.nullValue;
 
-import de.schafstelze.model.Sudoku;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
-import de.schafstelze.model.Sudoku.SudokuBuilder;
+import de.schafstelze.sudoku.model.Sudoku.SudokuBuilder;
 
 public class SudokuBuilderTest {
 
@@ -18,7 +16,7 @@ public class SudokuBuilderTest {
 	public void buildReturnsSudokuWithEmptyCells() {
 		Sudoku sudoku = new SudokuBuilder().build();
 		
-		NUMBER_LIST.forEach(
+		Number.NUMBER_LIST.forEach(
 				number -> sudoku.getRow(number).forEach(
 						cell -> assertThat(cell.getContent(), is(nullValue()))
 				));
@@ -26,12 +24,12 @@ public class SudokuBuilderTest {
 
 	@Test
 	public void addStaticCellAndBuild() {
-		Sudoku sudoku = new SudokuBuilder().addStaticCell(at(ONE, ONE), ONE).build();
+		Sudoku sudoku = new SudokuBuilder().addStaticCell(Position.at(Number.ONE, Number.ONE), Number.ONE).build();
 
-		assertThat(sudoku.getContent(at(ONE, ONE)), is(ONE));
+		assertThat(sudoku.getContent(Position.at(Number.ONE, Number.ONE)), CoreMatchers.is(Number.ONE));
 		
-		NUMBER_LIST.forEach(number -> {
-			if (number.equals(ONE)) {
+		Number.NUMBER_LIST.forEach(number -> {
+			if (number.equals(Number.ONE)) {
 				sudoku.getRow(number).stream().skip(1).forEach(
 						cell -> assertThat(cell.getContent(), is(nullValue()))
 				);
@@ -47,9 +45,9 @@ public class SudokuBuilderTest {
 	public void setContent() {
 		Sudoku sudoku = new SudokuBuilder().build();
 		
-		sudoku.cell(at(THREE, FIVE)).apply(NINE);
+		sudoku.cell(Position.at(Number.THREE, Number.FIVE)).apply(Number.NINE);
 		
-		assertThat(sudoku.getContent(at(THREE, FIVE)), is(NINE));
+		assertThat(sudoku.getContent(Position.at(Number.THREE, Number.FIVE)), CoreMatchers.is(Number.NINE));
 	}
 
 }

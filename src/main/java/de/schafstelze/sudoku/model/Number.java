@@ -1,4 +1,4 @@
-package de.schafstelze.model;
+package de.schafstelze.sudoku.model;
 import java.util.Arrays;
 import java.util.List;
 

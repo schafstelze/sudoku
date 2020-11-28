@@ -1,17 +1,14 @@
-package de.schafstelze.model;
+package de.schafstelze.sudoku.model;
 
-import static de.schafstelze.model.Position.at;
-import static de.schafstelze.model.Number.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import de.schafstelze.model.Cell;
-import de.schafstelze.model.Sudoku;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
-import de.schafstelze.model.Sudoku.SudokuBuilder;
+import de.schafstelze.sudoku.model.Sudoku.SudokuBuilder;
 
 public class SudokuTest {
 	
@@ -19,48 +16,48 @@ public class SudokuTest {
 	public void setContent() {
 		Sudoku sudoku = new SudokuBuilder().build();
 		
-		sudoku.cell(at(THREE, FIVE)).apply(NINE);
+		sudoku.cell(Position.at(Number.THREE, Number.FIVE)).apply(Number.NINE);
 		
-		assertThat(sudoku.getContent(at(THREE, FIVE)), is(NINE));
+		assertThat(sudoku.getContent(Position.at(Number.THREE, Number.FIVE)), CoreMatchers.is(Number.NINE));
 	}
 	
 	@Test
 	public void checkRowOrder() {
 		Sudoku sudoku = new SudokuBuilder()
-				.addStaticCell(at(ONE, ONE), ONE)
-				.addStaticCell(at(ONE, TWO), FIVE)
-				.addStaticCell(at(ONE, NINE), EIGHT)
+				.addStaticCell(Position.at(Number.ONE, Number.ONE), Number.ONE)
+				.addStaticCell(Position.at(Number.ONE, Number.TWO), Number.FIVE)
+				.addStaticCell(Position.at(Number.ONE, Number.NINE), Number.EIGHT)
 				.build();
 		
-		List<Cell> row = sudoku.getRow(ONE);
+		List<Cell> row = sudoku.getRow(Number.ONE);
 		
-		assertThat(row.get(0).getContent(), is(ONE));
-		assertThat(row.get(1).getContent(), is(FIVE));
-		assertThat(row.get(8).getContent(), is(EIGHT));
+		assertThat(row.get(0).getContent(), CoreMatchers.is(Number.ONE));
+		assertThat(row.get(1).getContent(), CoreMatchers.is(Number.FIVE));
+		assertThat(row.get(8).getContent(), CoreMatchers.is(Number.EIGHT));
 	}
 
 	@Test
 	public void checkColumnOrder() {
 		Sudoku sudoku = new SudokuBuilder()
-				.addStaticCell(at(ONE, FIVE), ONE)
-				.addStaticCell(at(THREE, FIVE), FIVE)
-				.addStaticCell(at(SIX, FIVE), EIGHT)
+				.addStaticCell(Position.at(Number.ONE, Number.FIVE), Number.ONE)
+				.addStaticCell(Position.at(Number.THREE, Number.FIVE), Number.FIVE)
+				.addStaticCell(Position.at(Number.SIX, Number.FIVE), Number.EIGHT)
 				.build();
 		
-		List<Cell> column = sudoku.getColumn(FIVE);
+		List<Cell> column = sudoku.getColumn(Number.FIVE);
 		
-		assertThat(column.get(0).getContent(), is(ONE));
-		assertThat(column.get(2).getContent(), is(FIVE));
-		assertThat(column.get(5).getContent(), is(EIGHT));
+		assertThat(column.get(0).getContent(), CoreMatchers.is(Number.ONE));
+		assertThat(column.get(2).getContent(), CoreMatchers.is(Number.FIVE));
+		assertThat(column.get(5).getContent(), CoreMatchers.is(Number.EIGHT));
 	}
 
 	@Test
 	public void print_filled_Sudoku() {
 		Sudoku sudoku = new SudokuBuilder().build();
 
-		NUMBER_LIST.forEach(rowNumber ->
-				NUMBER_LIST.forEach(columnNumber ->
-						sudoku.cell(at(rowNumber, columnNumber)).apply(columnNumber))
+		Number.NUMBER_LIST.forEach(rowNumber ->
+				Number.NUMBER_LIST.forEach(columnNumber ->
+						sudoku.cell(Position.at(rowNumber, columnNumber)).apply(columnNumber))
 		);
 
 		String expectedString =

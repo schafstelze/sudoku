@@ -1,4 +1,4 @@
-package de.schafstelze.model;
+package de.schafstelze.sudoku.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,6 @@ import java.util.Map;
 
 import com.google.common.collect.ArrayTable;
 import com.google.common.collect.Table;
-
-import static de.schafstelze.model.Number.NUMBER_LIST;
 
 public class Sudoku {
 
@@ -35,7 +33,7 @@ public class Sudoku {
 	
 	private List<Cell> toCellList(Map<Number, Cell> input) {
 		List<Cell> cells = new ArrayList<>();
-		NUMBER_LIST.forEach(number -> cells.add(input.get(number)));
+		Number.NUMBER_LIST.forEach(number -> cells.add(input.get(number)));
 		return cells;
 	}
 
@@ -43,8 +41,8 @@ public class Sudoku {
 	public String toString() {
 		String output = FIELD_AS_STRING;
 
-		for (Number rowNumber: NUMBER_LIST) {
-			for (Number cellNumber: NUMBER_LIST) {
+		for (Number rowNumber: Number.NUMBER_LIST) {
+			for (Number cellNumber: Number.NUMBER_LIST) {
 				Cell cell = field.get(rowNumber, cellNumber);
 				String cellIdentifier = rowNumber.asInteger() + "-" + cellNumber.asInteger();
 				String cellValue = cell.getContent() == null ? "   " : " " + cell.getContent().asInteger() + " ";
@@ -61,7 +59,7 @@ public class Sudoku {
 		private final Table<Number, Number, Cell> field;
 		
 		public SudokuBuilder() {
-			field = ArrayTable.create(NUMBER_LIST, NUMBER_LIST);
+			field = ArrayTable.create(Number.NUMBER_LIST, Number.NUMBER_LIST);
 		}
 		
 		public SudokuBuilder addStaticCell(final Position position, final Number value) {
@@ -70,8 +68,8 @@ public class Sudoku {
 		}
 	
 		public Sudoku build() {
-			NUMBER_LIST.forEach(rowKey ->
-					NUMBER_LIST.forEach(columnKey -> {
+			Number.NUMBER_LIST.forEach(rowKey ->
+					Number.NUMBER_LIST.forEach(columnKey -> {
 						Cell currentCell = field.get(rowKey, columnKey);
 
 						if (currentCell == null) {
