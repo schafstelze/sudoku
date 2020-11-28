@@ -1,19 +1,19 @@
 package de.schafstelze.sudoku.model;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.nullValue;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Test;
 
 import de.schafstelze.sudoku.model.Sudoku.SudokuBuilder;
 
 public class SudokuBuilderTest {
 
 	@Test
-	public void buildReturnsSudokuWithEmptyCells() {
+	void buildReturnsSudokuWithEmptyCells() {
 		Sudoku sudoku = new SudokuBuilder().build();
 		
 		Number.NUMBER_LIST.forEach(
@@ -23,7 +23,7 @@ public class SudokuBuilderTest {
 	}
 
 	@Test
-	public void addStaticCellAndBuild() {
+	void addStaticCellAndBuild() {
 		Sudoku sudoku = new SudokuBuilder().addStaticCell(Position.at(Number.ONE, Number.ONE), Number.ONE).build();
 
 		assertThat(sudoku.getContent(Position.at(Number.ONE, Number.ONE)), CoreMatchers.is(Number.ONE));
@@ -42,7 +42,7 @@ public class SudokuBuilderTest {
 	}
 	
 	@Test
-	public void setContent() {
+	void setContent() {
 		Sudoku sudoku = new SudokuBuilder().build();
 		
 		sudoku.cell(Position.at(Number.THREE, Number.FIVE)).apply(Number.NINE);

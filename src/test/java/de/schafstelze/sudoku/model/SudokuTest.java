@@ -1,19 +1,19 @@
 package de.schafstelze.sudoku.model;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import org.hamcrest.CoreMatchers;
-import org.junit.Test;
 
 import de.schafstelze.sudoku.model.Sudoku.SudokuBuilder;
 
 public class SudokuTest {
 	
 	@Test
-	public void setContent() {
+	void setContent() {
 		Sudoku sudoku = new SudokuBuilder().build();
 		
 		sudoku.cell(Position.at(Number.THREE, Number.FIVE)).apply(Number.NINE);
@@ -22,7 +22,7 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void checkRowOrder() {
+	void checkRowOrder() {
 		Sudoku sudoku = new SudokuBuilder()
 				.addStaticCell(Position.at(Number.ONE, Number.ONE), Number.ONE)
 				.addStaticCell(Position.at(Number.ONE, Number.TWO), Number.FIVE)
@@ -37,7 +37,7 @@ public class SudokuTest {
 	}
 
 	@Test
-	public void checkColumnOrder() {
+	void checkColumnOrder() {
 		Sudoku sudoku = new SudokuBuilder()
 				.addStaticCell(Position.at(Number.ONE, Number.FIVE), Number.ONE)
 				.addStaticCell(Position.at(Number.THREE, Number.FIVE), Number.FIVE)
@@ -52,7 +52,7 @@ public class SudokuTest {
 	}
 
 	@Test
-	public void print_filled_Sudoku() {
+	void print_filled_Sudoku() {
 		Sudoku sudoku = new SudokuBuilder().build();
 
 		Number.NUMBER_LIST.forEach(rowNumber ->
@@ -87,7 +87,7 @@ public class SudokuTest {
 	}
 
 	@Test
-	public void print_empty_Sudoku() {
+	void print_empty_Sudoku() {
 		Sudoku sudoku = new SudokuBuilder().build();
 
 		String expectedString =
